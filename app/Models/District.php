@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ArtInterestedJob extends Model
+class District extends Model
 {
     use HasFactory;
     protected $fillable = [];
-    protected $table = 'art_interseted_job';
+    protected $table = 'districts';
 }

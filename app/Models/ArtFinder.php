@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class ArtFinder extends Model
 {
     use HasFactory;
+    protected $fillable = [];
+    protected $table = 'art_finder';
 }
