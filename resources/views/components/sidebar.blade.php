@@ -30,7 +30,7 @@
     <li class="nav-item">
         <li class="nav-item">
             <a class="nav-link" href="{{route('admin.daftarLowongan')}}">
-                <i class="fas fa-fw fa-chart-area"></i>
+                <i class="fas fa-clipboard-list"></i>
                 <span>Daftar Lowongan</span></a>
         </li>
     </li>
@@ -45,7 +45,7 @@
     <!-- Nav Item - Charts -->
     <li class="nav-item">
         <a class="nav-link" href="{{route('admin.daftarArt')}}">
-            <i class="fas fa-fw fa-chart-area"></i>
+            <i class="fas fa-house-user"></i>
             <span>Daftar ART</span></a>
     </li>
 
