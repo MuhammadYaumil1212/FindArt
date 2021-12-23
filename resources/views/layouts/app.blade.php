@@ -26,8 +26,8 @@
 
 <!-- Page Wrapper -->
 <div id="wrapper">
+  {{-- Sidebar --}}
     @include('components.sidebar')
-
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
 
