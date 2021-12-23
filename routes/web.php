@@ -17,6 +17,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function() {
+Route::get('/admin/dashboard', function() {
     return view('dashboard');
-});
+})->name('admin.dashboard');
+
+Route::get('/admin/daftarLowongan', function() {
+    return "daftar Lowongan";
+})->name('admin.daftarLowongan');
+
+Route::get('/admin/daftarArt', function() {
+    return "daftar ART";
+})->name('admin.daftarArt');
