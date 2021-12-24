@@ -13,24 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-//admin routes
-Route::get('/admin/dashboard', function() {
+Route::get('/dashboard', function () {
     return view('dashboard');
-})->name('admin.dashboard');
+})->middleware(['auth'])->name('dashboard');
 
-Route::get('/admin/daftarLowongan', function() {
-    return "daftar Lowongan";
-})->name('admin.daftarLowongan');
-
-Route::get('/admin/daftarArt', function() {
-    return "daftar ART";
-})->name('admin.daftarArt');
-
-//ARt routes
-Route::get('/art/dashboard', function(){
-
-});
+require __DIR__.'/auth.php';
