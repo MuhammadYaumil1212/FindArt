@@ -18,7 +18,7 @@ Route::get('/', function () {
 });
 
 Route::get('/admin/dashboard', function() {
-    return view('dashboard');
+    return view('/admin/dashboard');
 })->name('admin.dashboard');
 
 Route::get('/admin/daftarLowongan', function() {
@@ -26,5 +26,25 @@ Route::get('/admin/daftarLowongan', function() {
 })->name('admin.daftarLowongan');
 
 Route::get('/admin/daftarArt', function() {
-    return "daftar ART";
+    return view('/admin/daftarArt');
 })->name('admin.daftarArt');
+
+Route::get('/admin/tambahLowongan', function() {
+    return view('/admin/tambahLowongan');
+})->name('admin.tambahJob');
+
+Route::get('/admin/pengaturanAkun', function() {
+    return view('/admin/pengaturanAkun');
+})->name('admin.pengaturanAkun');
+
+Route::get('/admin/ubahPassword', function() {
+    return view('/admin/ubahPassword');
+})->name('admin.ubahPassword');
+
+Route::get('/admin/detailLowongan', function() {
+    return view('/admin/detailLowongan');
+})->name('admin.detailLowongan');
+
+Route::get('/admin/updateLowongan', function() {
+    return view('/admin/updateLowongan');
+})->name('admin.updateLowongan');

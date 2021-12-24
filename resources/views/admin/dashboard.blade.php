@@ -3,7 +3,7 @@
      <!-- Page Heading -->
   <div class="d-sm-flex align-items-center justify-content-between mb-4">
       <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-      <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus"></i> Tambah Job </a>
+      <a href="{{route('admin.tambahJob')}}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus"></i> Tambah Lowongan </a>
   </div>
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
@@ -29,8 +29,8 @@
                           <td>Edinburgh</td>
                           <td>2011/04/25</td>
                           <td>
-                              <a href="http://" class="btn btn-sm btn-primary">Detail</a>
-                              <a href="http://" class="btn btn-sm btn-warning">Edit</a>
+                              <a href="{{route('admin.detailLowongan')}}" class="btn btn-sm btn-primary">Detail</a>
+                              <a href="{{route('admin.updateLowongan')}}" class="btn btn-sm btn-warning">Edit</a>
                               <a href="http://" class="btn btn-sm btn-danger">Delete</a>
                           </td>
                       </tr>
@@ -40,8 +40,8 @@
                           <td>Tokyo</td>
                           <td>2011/07/25</td>
                           <td>
-                            <a href="http://" class="btn btn-sm btn-primary">Detail</a>
-                            <a href="http://" class="btn btn-sm btn-warning">Edit</a>
+                            <a href="{{route('admin.detailLowongan')}}" class="btn btn-sm btn-primary">Detail</a>
+                            <a href="{{route('admin.updateLowongan')}}" class="btn btn-sm btn-warning">Edit</a>
                             <a href="http://" class="btn btn-sm btn-danger">Delete</a>
                         </td>
                       </tr>
