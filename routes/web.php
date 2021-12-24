@@ -17,6 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//admin routes
 Route::get('/admin/dashboard', function() {
     return view('dashboard');
 })->name('admin.dashboard');
@@ -28,3 +29,8 @@ Route::get('/admin/daftarLowongan', function() {
 Route::get('/admin/daftarArt', function() {
     return "daftar ART";
 })->name('admin.daftarArt');
+
+//ARt routes
+Route::get('/art/dashboard', function(){
+
+});
