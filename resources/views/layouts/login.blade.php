@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     
-    <title>{{config('app.name')}} | Login</title>
+    <title>{{config('app.name')}} | {{Route::currentRouteName()}}</title>
     
     <!-- Custom fonts for this template-->
     <link rel="shortcut icon" href="{{asset('img/home-solid.svg')}}">

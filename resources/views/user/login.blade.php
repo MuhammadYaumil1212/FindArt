@@ -9,17 +9,18 @@
                 <div class="card-body p-0">
                     <!-- Nested Row within Card Body -->
                     <div class="row">
-                        <img src="{{asset('img/findart_logo.png')}}" class="col-lg-6 d-none d-lg-block">
+                        @include('components.alert')
+                        <img src="{{asset('img/room2.jpg')}}" class="col-lg-6 d-none d-lg-block">
                         <div class="col-lg-6">
                             <div class="p-5">
                                 <div class="text-center">
                                     <h1 class="h4 text-gray-900 mb-4"><i class="fas fa-home"></i> FindArt</h1>
                                 </div>
-                                <form class="user">
+                                <form class="user" method="post">
+                                  @csrf
                                     <div class="form-group">
-                                        <input type="email" class="form-control form-control-user"
-                                            id="exampleInputEmail" aria-describedby="emailHelp"
-                                            placeholder="Enter Email Address...">
+                                        <input type="text" class="form-control form-control-user"
+                                            id="username" name="username" placeholder="Username....">
                                     </div>
                                     <div class="form-group">
                                         <input type="password" class="form-control form-control-user"
@@ -41,7 +42,7 @@
                                     <a class="small" href="forgot-password.html">Forgot Password?</a>
                                 </div>
                                 <div class="text-center">
-                                    <a class="small" href="register.html">Create an Account!</a>
+                                    <a class="small" href="{{route('user.register')}}">Create an Account!</a>
                                 </div>
                             </div>
                         </div>

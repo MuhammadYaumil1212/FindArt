@@ -23,7 +23,7 @@ class AuthFinderController extends Controller
      */
     public function create()
     {
-        //
+        return view('finder.register');
     }
 
     /**
