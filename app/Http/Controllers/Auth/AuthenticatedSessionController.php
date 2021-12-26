@@ -7,6 +7,7 @@ use App\Http\Requests\Auth\LoginRequest;
 use App\Models\Art;
 use App\Models\ArtFinder;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -31,20 +32,18 @@ class AuthenticatedSessionController extends Controller
     {
         switch($request->role){
             case 1 :
-             ArtFinder::create([
+             $artFinder = ArtFinder::create([
                     'user_id' => Auth::id(),
                     'full_name' => Auth::user()->ArtFinder->full_name,
                 ]);
-            // Auth::login($artFinder);
             $request->session()->flash('success','Berhasil Mendaftar!');
             return redirect(route('finder.dashboard'));
             case 0 :
-                Art::create([
+                $art = Art::create([
                     'user_id' => Auth::id(),
                     'full_name' => Auth::user()->Art->full_name,
                     'art_description' => null
                 ]);
-            // Auth::login($art);
             $request->session()->flash('success','Berhasil Mendaftar!');
             return redirect(route('art.dashboard'));
             default:

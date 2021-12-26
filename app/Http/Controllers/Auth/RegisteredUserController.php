@@ -72,8 +72,25 @@ class RegisteredUserController extends Controller
         ]);
             Auth::login($user);
             event(new Registered($user));
-            $request->session()->flash('success','Data anda berhasil di daftarkan! ');
-            return redirect(route('user.role'));
-            // return redirect(RouteServiceProvider::HOME);
+            if($request->role == 1){
+                $artFinder = ArtFinder::create([
+                    'user_id' => Auth::id(),
+                    'full_name' => $request->name,
+                ]);
+                $request->session()->flash('success','Data anda berhasil di daftarkan Sebagai pencari! ');
+                return redirect(route('user.login'));
+            }else if($request->role == 0){
+                $art = Art::create([
+                    'user_id' => Auth::id(),
+                    'full_name' => $request->name,
+                    'art_description' => null
+                ]);
+                $request->session()->flash('success','Data anda berhasil di daftarkan sebagai ART! ');
+                return redirect(route('user.login'));
+            }else{
+                $request->session()->flash('error','Error Gagal Mendaftar');
+                return redirect(route('user.login'));
+            }
+        }
     }
-}
+    // return redirect(RouteServiceProvider::HOME);
