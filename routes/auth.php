@@ -15,7 +15,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [AuthenticatedSessionController::class, 'create'])
                 ->middleware('guest')
                 ->name('user.login');
-                
+Route::get('/roles',[AuthenticatedSessionController::class,'role'])
+                ->middleware('auth')
+                ->name('user.role');
+Route::post('/role',[AuthenticatedSessionController::class,'storeRole'])
+                ->middleware('guest')
+                ->name('user.storeRole');
 Route::post('/login', [AuthenticatedSessionController::class, 'store'])
                 ->middleware('guest');
                                 

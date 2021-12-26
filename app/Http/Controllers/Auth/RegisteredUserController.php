@@ -70,28 +70,10 @@ class RegisteredUserController extends Controller
             'role' => $request->role,
             'password' => Hash::make($request->password),
         ]);
-        if($request->role == 1){
-            ArtFinder::create([
-                'user_id' => User::where('id'),
-                'full_name' => $request->name,
-            ]);
-            event(new Registered($user));
             Auth::login($user);
-            $request->session()->flash('success','Data anda berhasil di daftarkan sebagai Pencari ART');
-            return redirect(route('user.login'));
-        }else if($request->role == 0){
-            Art::create([
-                'user_id' => User::where('id'),
-                'full_name' => $request->name,
-            ]);
             event(new Registered($user));
-            Auth::login($user);
-            $request->session()->flash('success','Data anda berhasil di daftarkan sebagai ART');
-            return redirect(route('user.login'));
-        }else{
-            $request->session()->flash('error','Role anda tidak tersedia!');
-           return redirect(route('user.register'));
-        }
-        // return redirect(RouteServiceProvider::HOME);
+            $request->session()->flash('success','Data anda berhasil di daftarkan! ');
+            return redirect(route('user.role'));
+            // return redirect(RouteServiceProvider::HOME);
     }
 }

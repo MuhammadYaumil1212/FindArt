@@ -14,22 +14,21 @@
                     @csrf
                       <div class="form-group row">
                           <div class="col-sm-6 mb-3 mb-sm-0">
-                              <input type="text" class="form-control {{$errors->has('name') ? 'is-invalid' : ''}}" name="name" id="exampleFirstName"
-                                  placeholder="Name">
+                              <input type="text" class="form-control {{$errors->has('name') ? 'is-invalid' : ''}} " name="name" id="exampleFirstName" value="{{old('name')?:''}}" placeholder="Name">
                                   @if ($errors->has('name'))
                                       <p class="text-danger">{{$errors->first('name')}}</p>
                                   @endif
                           </div>
                        
                           <div class="col-sm-6">
-                              <input type="text" class="form-control {{$errors->has('contact_number') ? 'is-invalid' : ''}}" name="contact_number" id="contact_number"
+                              <input type="text" class="form-control {{$errors->has('contact_number') ? 'is-invalid' : ''}}" name="contact_number" value="{{old('contact_number')?:''}}"  id="contact_number"
                                   placeholder="No Telepon">
                               @if ($errors->has('contact_number'))
                                   <p class="text-danger">{{$errors->first('contact_number')}}</p>
                               @endif
                           </div>
                           <div class="col-sm-12 mt-2">
-                                <textarea class="form-control {{$errors->has('address') ? 'is-invalid' : ''}}" name="address" id="exampleFormControlTextarea1" rows="3" placeholder="Alamat"></textarea>
+                                <textarea class="form-control {{$errors->has('address') ? 'is-invalid' : ''}}" name="address" id="exampleFormControlTextarea1" rows="3" value="{{old('address')?:''}}"  placeholder="Alamat"></textarea>
                                 @if ($errors->has('address'))
                                   <p class="text-danger">{{$errors->first('address')}}</p>
                               @endif
@@ -102,7 +101,7 @@
                           </div>
                           <div class="col-sm-6 mt-3">
                               <input type="password" class="form-control {{$errors->has('password') ? 'is-invalid' : ''}}"
-                                  id="exampleRepeatPassword" name="password" placeholder="password">
+                                  id="exampleRepeatPassword" name="password" value="{{old('password')?:''}}"  placeholder="password">
                                   @if ($errors->has('password'))
                                   <p class="text-danger">{{$errors->first('password')}}</p>
                               @endif
@@ -110,7 +109,7 @@
 
                           <div class="col-sm-6 mt-3">
                               <input type="password" class="form-control {{$errors->has('password_confirmation') ? 'is-invalid' : ''}}"
-                                  id="exampleRepeatPassword" name="password_confirmation" placeholder="Ulangi password">
+                                  id="exampleRepeatPassword" value="{{old('password_confirmation')?:''}}"  name="password_confirmation" placeholder="Ulangi password">
                                   @if ($errors->has('password_confirmation'))
                                   <p class="text-danger">{{$errors->first('password_confirmation')}}</p>
                               @endif
