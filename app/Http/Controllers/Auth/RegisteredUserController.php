@@ -84,7 +84,7 @@ class RegisteredUserController extends Controller
                     'user_id' => Auth::id(),
                     'full_name' => $request->name,
                     'art_description' => null
-                ]);
+                ]);     
                 $request->session()->flash('success','Data anda berhasil di daftarkan sebagai ART! ');
                 return redirect(route('user.login'));
             }else{
