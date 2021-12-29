@@ -18,31 +18,31 @@ Route::get('/', function () {
 Route::middleware(['auth'])->group(function(){
     Route::get('/dashboard', function() {
         return view('admin.dashboard');
-    })->name('admin.dashboard');
+    })->name('admin.dashboard')->middleware('CheckRole');
 
     Route::get('/admin/daftarArt', function() {
         return view('admin.daftarArt');
-    })->name('admin.daftarArt');
+    })->name('admin.daftarArt')->middleware('CheckRole');
 
     Route::get('/admin/tambahLowongan', function() {
         return view('admin.tambahLowongan');
-    })->name('admin.tambahLowongan');
+    })->name('admin.tambahLowongan')->middleware('CheckRole');
 
     Route::get('/admin/pengaturanAkun', function() {
         return view('admin.pengaturanAkun');
-    })->name('admin.pengaturanAkun');
+    })->name('admin.pengaturanAkun')->middleware('CheckRole');
 
     Route::get('/admin/ubahPassword', function() {
         return view('admin.ubahPassword');
-    })->name('admin.ubahPassword');
+    })->name('admin.ubahPassword')->middleware('CheckRole');
 
     Route::get('/admin/detailLowongan', function() {
         return view('admin.detailLowongan');
-    })->name('admin.detailLowongan');
+    })->name('admin.detailLowongan')->middleware('CheckRole');
 
     Route::get('/admin/updateLowongan', function() {
         return view('admin.updateLowongan');
-    })->name('admin.updateLowongan');
+    })->name('admin.updateLowongan')->middleware('CheckRole');
 
     //ARt routes
     Route::get('/art/dashboard', function(){

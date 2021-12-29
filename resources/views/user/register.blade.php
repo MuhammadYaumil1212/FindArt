@@ -92,8 +92,8 @@
                           <div class="col-sm-12 mt-3 ">
                             <select class="form-control {{$errors->has('role') ? 'is-invalid' : ''}}" name="role" >
                                 <option selected>Mendaftar Sebagai</option>
-                                <option value="0">ART</option>
-                                <option value="1">Pencari ART</option>
+                                <option value="1">ART</option>
+                                <option value="0">Pencari ART</option>
                               </select>
                               @if ($errors->has('role'))
                                   <p class="text-danger">{{$errors->first('role')}}</p>
