@@ -1,9 +1,9 @@
 @extends('layouts.app')
 @section('content')
-     <!-- Page Heading -->
+  <!-- Page Heading -->
   <div class="d-sm-flex align-items-center justify-content-between mb-4">
       <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-      <a href="{{route('admin.tambahJob')}}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus"></i> Tambah Lowongan </a>
+      <a href="{{route('admin.tambahLowongan')}}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus"></i> Tambah Lowongan </a>
   </div>
     <!-- DataTales Example -->
     <div class="card shadow mb-4">

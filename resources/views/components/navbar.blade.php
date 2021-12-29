@@ -22,18 +22,17 @@
                 <!-- Dropdown - User Information -->
                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                     aria-labelledby="userDropdown">
-                    <a class="dropdown-item" href="#">
+                    @if (Auth::user()->role == 0)
+                    <a class="dropdown-item" href="{{route('admin.pengaturanAkun')}}">
                         <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                         Profile
                     </a>
-                    <a class="dropdown-item" href="#">
-                        <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                        Settings
+                    @elseif (Auth::user()->role == 1)
+                    <a class="dropdown-item" href="{{route('art.pengaturanAkun')}}">
+                        <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                        Profile
                     </a>
-                    <a class="dropdown-item" href="#">
-                        <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                        Activity Log
-                    </a>
+                    @endif
                     <div class="dropdown-divider"></div>
                     <form action="{{route('logout')}}" method="post">
                         @csrf

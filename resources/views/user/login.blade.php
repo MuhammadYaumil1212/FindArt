@@ -16,7 +16,7 @@
                                 <div class="text-center">
                                     <h1 class="h4 text-gray-900 mb-4"><i class="fas fa-home"></i> FindArt</h1>
                                 </div>
-                                <form class="user" method="post">
+                                <form class="user" action="{{route('user.masuk')}}" method="post">
                                   @csrf
                                     <div class="form-group">
                                         <input type="text" class="form-control form-control-user"
@@ -24,7 +24,7 @@
                                     </div>
                                     <div class="form-group">
                                         <input type="password" class="form-control form-control-user"
-                                            id="exampleInputPassword" placeholder="Password">
+                                            id="exampleInputPassword" name="password" placeholder="Password">
                                     </div>
                                     <div class="form-group">
                                         <div class="custom-control custom-checkbox small">
@@ -33,9 +33,9 @@
                                                 Me</label>
                                         </div>
                                     </div>
-                                    <a href="index.html" class="btn btn-primary btn-user btn-block">
+                                    <button type="submit" class="btn btn-primary btn-user btn-block">
                                         Login
-                                    </a>
+                                    </button>
                                 </form>
                                 <hr>
                                 <div class="text-center">

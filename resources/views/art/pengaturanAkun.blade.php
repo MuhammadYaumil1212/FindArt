@@ -2,16 +2,24 @@
 @section('content')
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Pengaturan Akun</h1>
+        <h1 class="h3 mb-0 text-gray-800">Pengaturan Akun ART</h1>
     </div>
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
         <div class="card-body">
             <img src="{{asset('img/undraw_profile.svg')}}" class="img-fluid d-block mx-auto" alt="Avatar" width="10%">
+			<h3 class="text-center" style="margin-top: 1em">
+				Status: Bekerja
+			</h3>
             <form method="post" id="form-setting">
 				<div class="form-group mt-2">
 					<label for="profile_photo">Foto profile</label>
 					<input type="file" name="profile_photo" class="form-control" id="profile_photo">
+				</div>
+
+				<div class="form-group mt-2">
+					<label for="description">Deskripsi anda</label>
+					<textarea name="description" class="form-control" id="description" cols="100" rows="10" placeholder="Deskripsi anda..." required></textarea>
 				</div>
 
 				<div class="form-group mt-2">
@@ -61,7 +69,7 @@
 				</div>
 
 				<button type="submit" class="btn btn-primary mt-3 mb-5">Simpan</button>
-				<a href="{{route('admin.ubahPassword')}}" class="btn btn-warning mt-3 mb-5">Ubah Password</a>
+				<a href="{{route('art.ubahPassword')}}" class="btn btn-warning mt-3 mb-5">Ubah Password</a>
 			</form>
         </div>
     </div>
