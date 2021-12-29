@@ -72,14 +72,14 @@ class RegisteredUserController extends Controller
         ]);
             Auth::login($user);
             event(new Registered($user));
-            if($request->role == 1){
+            if($request->role == 0){
                 $artFinder = ArtFinder::create([
                     'user_id' => Auth::id(),
                     'full_name' => $request->name,
                 ]);
                 $request->session()->flash('success','Data anda berhasil di daftarkan Sebagai pencari! ');
                 return redirect(route('user.login'));
-            }else if($request->role == 0){
+            }else if($request->role == 1){
                 $art = Art::create([
                     'user_id' => Auth::id(),
                     'full_name' => $request->name,
