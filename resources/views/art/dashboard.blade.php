@@ -27,41 +27,41 @@
                         </div>
                     </div>
                     <div class="col-12 col-sm-12 col-md-2 col-lg-2 mt-3">
-                        <button type="submit" id="cari" class="btn btn-primary mt">Cari</button>
-                        <button type="button" id="reset-search" class="btn btn-primary mt">Reset</button>
+                        <button type="submit" id="cari" class="btn btn-sm btn-primary mt">Cari</button>
+                        <button type="button" id="reset-search" class="btn btn-sm btn-primary mt">Reset</button>
                     </div>
                 </div>
             </form>
             <div class="row">
                 <div class="col-md-4 mb-4">
                     <div class="card">
-                        <img src="..." class="card-img-top" alt="thumbnail.jpg">
+                        <img src="{{asset('img/maid.jpg')}}" class="card-img-top" alt="thumbnail.jpg">
                         <div class="card-body">
-                            <h3 class="card-title mb-3">Rp. 1000000 /bulan</h3>
+                            <h5 class="card-title mb-3">Rp. 1000000 /bulan</h5>
                             <h5 class="card-text text-primary mb-3">Rias Gremory</h5>
-                            <h5 class="card-text mb-3">KAPUBATEN NGANJUK, JAWA TIMUR</h5>
+                            <p class="card-text mb-3">KAPUBATEN NGANJUK, JAWA TIMUR</p>
                             <a href="{{route('art.detailLowongan')}}" class="btn btn-primary">Detail</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4 mb-4">
                     <div class="card">
-                        <img src="..." class="card-img-top" alt="thumbnail.jpg">
+                        <img src="{{asset('img/maid2.jpg')}}" class="card-img-top" alt="thumbnail.jpg">
                         <div class="card-body">
-                            <h3 class="card-title mb-3">Rp. 1000000 /bulan</h3>
+                            <h5 class="card-title mb-3">Rp. 1000000 /bulan</h5>
                             <h5 class="card-text text-primary mb-3">Paul Greyrat</h5>
-                            <h5 class="card-text mb-3">WINTERFELL, NORTH WESTEROS</h5>
+                            <p class="card-text mb-3">WINTERFELL, NORTH WESTEROS</p>
                             <a href="{{route('art.detailLowongan')}}" class="btn btn-primary">Detail</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4 mb-4">
                     <div class="card">
-                        <img src="..." class="card-img-top" alt="thumbnail.jpg">
+                        <img src="{{asset('img/room.jpg')}}" class="card-img-top" alt="thumbnail.jpg">
                         <div class="card-body">
-                            <h3 class="card-title mb-3">Rp. 1000000 /bulan</h3>
+                            <h5 class="card-title mb-3">Rp. 1000000 /bulan</h5>
                             <h5 class="card-text text-primary mb-3">Ying Zheng</h5>
-                            <h5 class="card-text mb-3">KOTA XIANYANG, QIN BAGIAN BARAT</h5>
+                            <p class="card-text mb-3">KOTA XIANYANG, QIN BAGIAN BARAT</p>
                             <a href="{{route('art.detailLowongan')}}" class="btn btn-primary">Detail</a>
                         </div>
                     </div>
