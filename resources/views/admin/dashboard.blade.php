@@ -5,6 +5,9 @@
       <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
       <a href="{{route('admin.tambahLowongan')}}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus"></i> Tambah Lowongan </a>
   </div>
+  <div class="col-md-12">
+    @include('components.alert')
+  </div>
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
       <div class="card-header py-3">

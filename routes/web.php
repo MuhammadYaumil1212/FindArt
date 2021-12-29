@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FinderController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,33 +17,29 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::middleware(['auth'])->group(function(){
-    Route::get('/dashboard', function() {
-        return view('admin.dashboard');
-    })->name('admin.dashboard')->middleware('CheckRole');
-
+    Route::get('/dashboard',[FinderController::class,'index'])->name('admin.dashboard');
+    Route::get('/admin/tambahLowongan', [FinderController::class,'create'])->name('admin.tambahLowongan');
+    Route::post('/admin/tambahLowongan', [FinderController::class,'store'])->name('admin.store');
     Route::get('/admin/daftarArt', function() {
         return view('admin.daftarArt');
-    })->name('admin.daftarArt')->middleware('CheckRole');
+    })->name('admin.daftarArt');
 
-    Route::get('/admin/tambahLowongan', function() {
-        return view('admin.tambahLowongan');
-    })->name('admin.tambahLowongan')->middleware('CheckRole');
 
     Route::get('/admin/pengaturanAkun', function() {
         return view('admin.pengaturanAkun');
-    })->name('admin.pengaturanAkun')->middleware('CheckRole');
+    })->name('admin.pengaturanAkun');
 
     Route::get('/admin/ubahPassword', function() {
         return view('admin.ubahPassword');
-    })->name('admin.ubahPassword')->middleware('CheckRole');
+    })->name('admin.ubahPassword');
 
     Route::get('/admin/detailLowongan', function() {
         return view('admin.detailLowongan');
-    })->name('admin.detailLowongan')->middleware('CheckRole');
+    })->name('admin.detailLowongan');
 
     Route::get('/admin/updateLowongan', function() {
         return view('admin.updateLowongan');
-    })->name('admin.updateLowongan')->middleware('CheckRole');
+    })->name('admin.updateLowongan');
 
     //ARt routes
     Route::get('/art/dashboard', function(){
