@@ -20,6 +20,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/dashboard',[FinderController::class,'index'])->name('admin.dashboard');
     Route::get('/admin/tambahLowongan', [FinderController::class,'create'])->name('admin.tambahLowongan');
     Route::post('/admin/tambahLowongan', [FinderController::class,'store'])->name('admin.store');
+    
     Route::get('/admin/daftarArt', function() {
         return view('admin.daftarArt');
     })->name('admin.daftarArt');
