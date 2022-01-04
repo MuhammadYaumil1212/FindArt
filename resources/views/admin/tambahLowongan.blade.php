@@ -16,7 +16,7 @@
 						@csrf
 				<div class="form-group">
 					<label for="job-thumbnail">Thumbnail</label>
-					<input type="file" name="photo_url" class="form-control {{$errors->has('photo_url') ? 'is-invalid' : ''}}" id="job_thumbnail" value="{{old('photo_url')}}">
+					<input type="file" name="photo_url" class="form-control {{$errors->has('photo_url') ? 'is-invalid' : ''}}" id="photo_url" value="{{old('photo_url')}}">
 					<div class="text-small text-danger">Ukuran Dimensi 1280 x 720 </div>
 					@if ($errors->has('photo_url'))
 						<div class="invalid-feedback">

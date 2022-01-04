@@ -8,50 +8,31 @@
   <div class="col-md-12">
     @include('components.alert')
   </div>
-    <!-- DataTales Example -->
-    <div class="card shadow mb-4">
-      <div class="card-header py-3">
-          <h6 class="m-0 font-weight-bold text-primary">Daftar Lowongan Anda</h6>
-      </div>
-      <div class="card-body">
-          <div class="table-responsive">
-              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                  <thead>
-                      <tr>
-                          <th>Thumbnail</th>
-                          <th>Gaji</th>
-                          <th>Tanggal berakhir</th>
-                          <th>Tanggal perubahan</th>
-                          <th>Aksi</th>
-                      </tr>
-                  </thead>
-                  <tbody>
-                      <tr>
-                          <td>Tiger Nixon</td>
-                          <td>System Architect</td>
-                          <td>Edinburgh</td>
-                          <td>2011/04/25</td>
-                          <td>
-                              <a href="{{route('admin.detailLowongan')}}" class="btn btn-sm btn-primary">Detail</a>
-                              <a href="{{route('admin.updateLowongan')}}" class="btn btn-sm btn-warning">Edit</a>
-                              <a href="http://" class="btn btn-sm btn-danger">Delete</a>
-                          </td>
-                      </tr>
-                      <tr>
-                          <td>Garrett Winters</td>
-                          <td>Accountant</td>
-                          <td>Tokyo</td>
-                          <td>2011/07/25</td>
-                          <td>
-                            <a href="{{route('admin.detailLowongan')}}" class="btn btn-sm btn-primary">Detail</a>
-                            <a href="{{route('admin.updateLowongan')}}" class="btn btn-sm btn-warning">Edit</a>
-                            <a href="http://" class="btn btn-sm btn-danger">Delete</a>
-                        </td>
-                      </tr>
-                  </tbody>
-              </table>
-          </div>
-      </div>
-  </div>
-  <!-- test commit -->
+    <!-- Cards data -->
+    @if (!empty($paginationJob))
+    @foreach ($paginationJob as $job)
+    <div class="col-md-12">
+        <div class="card mb-3" style="max-width: 920px;">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="/uploads/job/{{$job->photo_url}}" class="img-fluid rounded-start" style="height: 300px;" alt="{{$job->photo_url}}">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">Rp{{$job->job_payment}}</h5>
+                        <p class="card-text">{{Str::limit($job->job_description,200)}}</p>
+                        <p class="card-text text-small">Due Date : {{$job->job_due_date}}</p>
+                        <p class="card-text"><small class="text-muted">{{\Carbon\Carbon::parse($job->created_at)->diffForHumans()}}</small></p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @endforeach
+    {!! $paginationJob->links() !!}
+    @else
+        <p>There is no record</p>
+    @endif
+  <!-- End Cards -->
 @endsection

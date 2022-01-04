@@ -6,6 +6,7 @@ use App\Http\Requests\LowonganRequest;
 use App\Models\ArtFinder;
 use App\Models\JobVacancy;
 use App\Models\Photo;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
@@ -20,7 +21,9 @@ class FinderController extends Controller
      */
     public function index()
     {
-        return view('admin.dashboard');
+        $paginationJob = JobVacancy::join('art_finder','art_finder.id', '=','art_finder_id')
+        ->where('art_finder.user_id', '=', Auth::id())->paginate(3);
+        return view('admin.dashboard',compact('paginationJob'));
     }
 
     /**
@@ -39,8 +42,15 @@ class FinderController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(LowonganRequest $request)
+    public function store(Request $request)
     { 
+
+        $request->validate([
+            'photo_url' => 'required|image|mimes:png,jpg,jpeg|max:5000|dimensions:width=1280,height=720',
+            'job_payment' => 'required|numeric|min:500000|max:1000000000',
+            'job_due_date' => 'required|date',
+            'job_description' => 'required'
+        ]);
         $userId =  ArtFinder::where('user_id','=',Auth::id())->get('id');
         foreach ($userId as $key) {  
             $dateFormat = Carbon::parse($request->job_due_date)->format('Y-m-d');
@@ -51,17 +61,16 @@ class FinderController extends Controller
                 $file->move(public_path('uploads/job/'),$filename);
                 $photo = $request->photo_url = $filename;
             }
-            $job = JobVacancy::create([
-                'art_finder_id' => $key->id,
-                'is_visible' => 1,
-                'photo_url' => $request->photo_url,
-                'job_payment' => $request->job_payment,
-                'job_due_date' => $dateFormat,
-                'job_description' => $request->job_description
-            ]);
+            $job = new JobVacancy;
+            $job->art_finder_id = $key->id;
+            $job->is_visible = 1;
+            $job->photo_url = $photo;
+            $job->job_payment = $request->job_payment;
+            $job->job_due_date = $dateFormat;
+            $job->job_description = $request->job_description;
+            $job->save();
         }
-        return $job;
-        // return redirect(route('admin.dashboard'))->with('success','Gambar berhasil di upload, data berhasil di tambahkan');
+        return redirect(route('admin.dashboard'))->with('success','Gambar berhasil di upload, data berhasil di tambahkan');
     }
 
     /**
