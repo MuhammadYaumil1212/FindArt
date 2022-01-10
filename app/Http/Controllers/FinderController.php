@@ -10,6 +10,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use Exception;
 use \validator;
 
 class FinderController extends Controller
@@ -49,7 +50,7 @@ class FinderController extends Controller
             'photo_url' => 'required|image|mimes:png,jpg,jpeg|max:5000|dimensions:width=1280,height=720',
             'job_payment' => 'required|numeric|min:500000|max:1000000000',
             'job_due_date' => 'required|date',
-            'job_description' => 'required'
+            'job_description' => 'required|max:10000|min:100'
         ]);
         $userId =  ArtFinder::where('user_id','=',Auth::id())->get('id');
         foreach ($userId as $key) {  
@@ -58,17 +59,17 @@ class FinderController extends Controller
                 $file = $request->file('photo_url');
                 $extention = $file->getClientOriginalExtension();
                 $filename = date('d-m-Y').'.'.$extention;
-                $file->move(public_path('uploads/job/'),$filename);
+                $file->move('uploads/job/',$filename);
                 $photo = $request->photo_url = $filename;
             }
-            $job = new JobVacancy;
-            $job->art_finder_id = $key->id;
-            $job->is_visible = 1;
-            $job->photo_url = $photo;
-            $job->job_payment = $request->job_payment;
-            $job->job_due_date = $dateFormat;
-            $job->job_description = $request->job_description;
-            $job->save();
+            JobVacancy::create([    
+                'art_finder_id' => $key->id,
+                'is_visible' => 1,
+                'photo_url' => $photo,
+                'job_payment' => $request->job_payment,
+                'job_due_date' => $dateFormat,
+                'job_description' => $request->job_description
+            ]);
         }
         return redirect(route('admin.dashboard'))->with('success','Gambar berhasil di upload, data berhasil di tambahkan');
     }
@@ -81,7 +82,8 @@ class FinderController extends Controller
      */
     public function show($id)
     {
-        //
+        $jobVacancy = JobVacancy::where('id_job','=',$id)->join('art_finder','art_finder.id', '=','art_finder_id')->first();
+        return view('admin.detail',compact('jobVacancy'));
     }
 
     /**
@@ -92,7 +94,8 @@ class FinderController extends Controller
      */
     public function edit($id)
     {
-        //
+        $jobVacancy = JobVacancy::where('id_job','=',$id)->first();
+        return view('admin.edit',compact('jobVacancy',compact('jobVacancy')));
     }
 
     /**
@@ -102,9 +105,23 @@ class FinderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,$id_job)
     {
-        //
+        $request->validate([
+            'job_payment' => 'required|numeric|min:500000|max:1000000000',
+            'job_due_date' => 'required|date',
+            'job_description' => 'required|max:10000|min:100',
+        ]);
+       $job = JobVacancy::where('id_job',$id_job)->update([
+            'job_payment' => $request->job_payment,
+            'job_due_date' => $request->job_due_date,
+            'job_description'=>$request->job_description,
+            'is_visible' => $request->is_visible
+        ]);
+        if($job){
+            return redirect(route('admin.dashboard'))->with('success','Gambar berhasil di upload, data berhasil di tambahkan');
+        }
+        return redirect(route('admin.dashboard'))->with('error','Error input data');
     }
 
     /**
@@ -113,8 +130,9 @@ class FinderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id_job)
     {
-        //
+            JobVacancy::where('id_job',$id_job)->delete();
+            return redirect(route('admin.dashboard'))->with('error', 'Job Deleted!');
     }
 }

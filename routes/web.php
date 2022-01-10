@@ -20,6 +20,10 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/dashboard',[FinderController::class,'index'])->name('admin.dashboard');
     Route::get('/admin/tambahLowongan', [FinderController::class,'create'])->name('admin.tambahLowongan');
     Route::post('/admin/tambahLowongan', [FinderController::class,'store'])->name('admin.store');
+    Route::get('/admin/{id}/edit', [FinderController::class,'edit'])->name('admin.edit');
+    Route::get('/admin/{id}/detail', [FinderController::class,'show'])->name('admin.detail');
+    Route::delete('/admin/{id}/delete', [FinderController::class,'destroy'])->name('admin.destroy');
+    Route::put('/admin/{id}/update',[FinderController::class,'update'])->name('admin.update');
     
     Route::get('/admin/daftarArt', function() {
         return view('admin.daftarArt');
@@ -63,8 +67,4 @@ Route::middleware(['auth'])->group(function(){
         return view('art.ubahPassword');
     })->name('art.ubahPassword');
 });
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth'])->name('dashboard');
-
 require __DIR__.'/auth.php';
