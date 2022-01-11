@@ -24,12 +24,20 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/admin/{id}/detail', [FinderController::class,'show'])->name('admin.detail');
     Route::delete('/admin/{id}/delete', [FinderController::class,'destroy'])->name('admin.destroy');
     Route::put('/admin/{id}/update',[FinderController::class,'update'])->name('admin.update');
-    
-    Route::get('/admin/daftarArt', function() {
-        return view('admin.daftarArt');
-    })->name('admin.daftarArt');
+    Route::get('/admin/interested',[FinderController::class,'interested'])->name('admin.interested');
+    Route::get('/admin/rating',[FinderController::class,'rating'])->name('admin.rating');
+    Route::get('/admin/daftarArt', [FinderController::class,'listArt'])->name('admin.daftarArt');
+    Route::Put('/admin/{id}/updateJobStatus', [FinderController::class,'updateJob'])->name('admin.updateJobStatus');
+    Route::Put('/admin/{id}/hireJobStatus', [FinderController::class,'hireJob'])->name('admin.hireJobStatus');
+    Route::Put('/admin/{id}/rejectJobStatus', [FinderController::class,'rejectJob'])->name('admin.rejectJobStatus');
+    Route::get('/admin/GiveRating',[FinderController::class,'giveRate'])->name('admin.addRating');
+    Route::Put('/admin/{id}/storeRating', [FinderController::class,'storeRating'])->name('admin.storeRating');
 
+    Route::get('/admin/detailLowongan', function() {
+        return view('admin.detailLowongan');
+    })->name('admin.detailLowongan');
 
+    // Setting akun
     Route::get('/admin/pengaturanAkun', function() {
         return view('admin.pengaturanAkun');
     })->name('admin.pengaturanAkun');
@@ -37,14 +45,6 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/admin/ubahPassword', function() {
         return view('admin.ubahPassword');
     })->name('admin.ubahPassword');
-
-    Route::get('/admin/detailLowongan', function() {
-        return view('admin.detailLowongan');
-    })->name('admin.detailLowongan');
-
-    Route::get('/admin/updateLowongan', function() {
-        return view('admin.updateLowongan');
-    })->name('admin.updateLowongan');
 
     //ARt routes
     Route::get('/art/dashboard', function(){

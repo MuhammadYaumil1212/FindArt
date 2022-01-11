@@ -8,6 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class ArtRating extends Model
 {
     use HasFactory;
-    protected $fillable = [];
+    protected $fillable = ['art_id','art_finder_id','rating'];
     protected $table = 'art_rating';
 }

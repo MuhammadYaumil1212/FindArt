@@ -25,9 +25,18 @@
 
     <!-- Nav Item - Charts -->
     <li class="nav-item">
-        <a class="nav-link" href="{{route('admin.daftarArt')}}">
+        <a class="nav-link" href="{{route('admin.daftarArt')}}" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
             <i class="fas fa-house-user"></i>
             <span>ART Ku</span></a>
+            <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+            data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">ART</h6>
+                <a class="collapse-item" href="{{route('admin.daftarArt')}}">Dashboard ART</a>
+                <a class="collapse-item" href="{{route('admin.interested')}}">Daftar Lamaran</a>
+                <a class="collapse-item" href="{{route('admin.rating')}}">Daftar Rating</a>
+            </div>
+        </div>
     </li>
 
     <!-- Divider -->

@@ -8,6 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class ArtAcceptedJob extends Model
 {
     use HasFactory;
-    protected $fillable = [];
+    protected $fillable = ['art_finder_id','job_vacancy_id','art_id','accepted_job_status'];
     protected $table = 'art_accepted_job';
 }
