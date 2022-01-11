@@ -82,7 +82,8 @@ class RegisteredUserController extends Controller
             }else if($request->role == 1){
                 $art = Art::create([
                     'user_id' => Auth::id(),
-                    'full_name' => $request->name,
+                    'kontak' => $request->contact_number,
+                    'art_full_name' => $request->name,
                     'art_description' => null
                 ]);     
                 $request->session()->flash('success','Data anda berhasil di daftarkan sebagai ART! ');
