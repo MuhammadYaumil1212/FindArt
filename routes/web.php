@@ -45,24 +45,23 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/admin/ubahPassword', function() {
         return view('admin.ubahPassword');
     })->name('admin.ubahPassword');
-
     //ARt routes
     Route::get('/art/dashboard', function(){
         return view('art.dashboard');
     })->name('art.dashboard');
-
+    
     Route::get('/art/detailLowongan', function(){
         return view('art.detailLowongan');
     })->name('art.detailLowongan');
-
+    
     Route::get('/art/daftarPekerjaan', function(){
         return view('art.daftarPekerjaan');
     })->name('art.daftarPekerjaan');
-
+    
     Route::get('/art/pengaturanAkun', function(){
         return view('art.pengaturanAkun');
     })->name('art.pengaturanAkun');
-
+    
     Route::get('/art/ubahPassword', function(){
         return view('art.ubahPassword');
     })->name('art.ubahPassword');
