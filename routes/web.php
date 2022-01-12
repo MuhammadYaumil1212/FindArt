@@ -33,6 +33,14 @@ Route::middleware(['auth','role:0'])->group(function(){
     Route::Put('/admin/{id}/rejectJobStatus', [FinderController::class,'rejectJob'])->name('admin.rejectJobStatus');
     Route::get('/admin/GiveRating',[FinderController::class,'giveRate'])->name('admin.addRating');
     Route::Put('/admin/{id}/storeRating', [FinderController::class,'storeRating'])->name('admin.storeRating');
+    // Setting akun
+    Route::get('/admin/pengaturanAkun', function() {
+        return view('admin.pengaturanAkun');
+    })->name('admin.pengaturanAkun');
+
+    Route::get('/admin/ubahPassword', function() {
+        return view('admin.ubahPassword');
+    })->name('admin.ubahPassword');
 });
 Route::middleware(['auth','role:1'])->group(function(){
     //ARt routes
@@ -40,5 +48,13 @@ Route::middleware(['auth','role:1'])->group(function(){
     Route::get('/art/{id}/detailLowongan',[ArtController::class,'show'])->name('art.lamar');
     Route::post('/art/{id}/apply',[ArtController::class,'apply'])->name('art.apply');
     Route::get('/art/daftarPekerjaan',[ArtController::class,'daftarPekerjaan'])->name('art.daftarPekerjaan');
+    
+    Route::get('/art/pengaturanAkun', function(){
+        return view('art.pengaturanAkun');
+    })->name('art.pengaturanAkun');
+
+    Route::get('/art/ubahPassword', function(){
+        return view('art.ubahPassword');
+    })->name('art.ubahPassword');
 });
 require __DIR__.'/auth.php';

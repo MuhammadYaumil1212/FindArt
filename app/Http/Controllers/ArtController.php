@@ -8,7 +8,7 @@ use App\Models\JobVacancy;
 use App\Models\Provincy;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use DataTables;
+
 class ArtController extends Controller
 {
     // 0 = pending
@@ -21,26 +21,12 @@ class ArtController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        // $jobs = JobVacancy::join('art_finder','art_finder.id_finder','=','art_finder_id')
-        // ->where('is_visible','=','1')
-        // ->get();
-        if ($request->ajax()) {
-            $data =  JobVacancy::join('art_finder','art_finder.id_finder','=','art_finder_id')
-            ->where('is_visible','=','1')
-            ->get();
-            return Datatables::of($data)
-                    ->addIndexColumn()
-                    ->addColumn('action', function($row){
-     
-                           $btn = '<a href="javascript:void(0)" class="lamar btn btn-info btn-sm">Lamar</a>';
-                            return $btn;
-                    })
-                    ->rawColumns(['action'])
-                    ->make(true);
-        }
-        return view('art.dashboard');
+        $jobs = JobVacancy::join('art_finder','art_finder.id_finder','=','art_finder_id')
+        ->where('is_visible','=','1')
+        ->get();
+        return view('art.dashboard',compact('jobs'));
     }
     /**
      * Display the specified resource.
