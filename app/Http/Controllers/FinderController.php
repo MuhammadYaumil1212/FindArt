@@ -157,7 +157,7 @@ class FinderController extends Controller
 
     public function updateJob(Request $request, $id){
        $firePeople = ArtAcceptedJob::where('id_accepted',$id)->update([
-           'accepted_job_status' => $request->accepted_job_status,
+           'accepted_job_status' => $request->accepted_job_status
         ]);
         $addRate = ArtRating::create([
             'art_id' => $request->art_id,
