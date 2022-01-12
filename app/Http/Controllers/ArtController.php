@@ -34,6 +34,7 @@ class ArtController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    //testing 
     public function show($id)
     {
         $apply = JobVacancy::join('art_finder','art_finder.id_finder','=','art_finder_id')
