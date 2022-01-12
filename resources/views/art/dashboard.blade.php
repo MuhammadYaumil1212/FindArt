@@ -2,7 +2,7 @@
 @section('content')
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Dashboard ART</h1>
+        <h1 class="h3 mb-0 text-gray-800">Selamat Datang , {{Auth::User()->username}}</h1>
     </div>
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
@@ -33,40 +33,32 @@
                 </div>
             </form>
             <div class="row">
-                <div class="col-md-4 mb-4">
-                    <div class="card">
-                        <img src="{{asset('img/maid.jpg')}}" class="card-img-top" alt="thumbnail.jpg">
-                        <div class="card-body">
-                            <h5 class="card-title mb-3">Rp. 1000000 /bulan</h5>
-                            <h5 class="card-text text-primary mb-3">Rias Gremory</h5>
-                            <p class="card-text mb-3">KAPUBATEN NGANJUK, JAWA TIMUR</p>
-                            <a href="{{route('art.detailLowongan')}}" class="btn btn-primary">Detail</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="card">
-                        <img src="{{asset('img/maid2.jpg')}}" class="card-img-top" alt="thumbnail.jpg">
-                        <div class="card-body">
-                            <h5 class="card-title mb-3">Rp. 1000000 /bulan</h5>
-                            <h5 class="card-text text-primary mb-3">Paul Greyrat</h5>
-                            <p class="card-text mb-3">WINTERFELL, NORTH WESTEROS</p>
-                            <a href="{{route('art.detailLowongan')}}" class="btn btn-primary">Detail</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="card">
-                        <img src="{{asset('img/room.jpg')}}" class="card-img-top" alt="thumbnail.jpg">
-                        <div class="card-body">
-                            <h5 class="card-title mb-3">Rp. 1000000 /bulan</h5>
-                            <h5 class="card-text text-primary mb-3">Ying Zheng</h5>
-                            <p class="card-text mb-3">KOTA XIANYANG, QIN BAGIAN BARAT</p>
-                            <a href="{{route('art.detailLowongan')}}" class="btn btn-primary">Detail</a>
-                        </div>
-                    </div>
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="myTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Nama Finder</th>
+                                <th>Gaji</th>
+                                <th>Deskripsi Kerja</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($jobs as $job)
+                            <tr>
+                                <td>{{$job->full_name}}</td>
+                                <td>{{$job->job_payment}}</td>
+                                <td>{{Str::limit($job->job_description)}}</td>
+                                <td>
+                                    <a href="{{route('art.lamar',$job->id_job)}}" class="btn btn-sm btn-info">Lamar</a>
+                                </td>
+                            </tr>  
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
+
 @endsection

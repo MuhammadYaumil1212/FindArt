@@ -73,7 +73,7 @@ class FinderController extends Controller
                 $photo = $request->photo_url = $filename;
             }
             JobVacancy::create([    
-                'art_finder_id' => $key->id,
+                'art_finder_id' => $key->id_finder,
                 'is_visible' => 1,
                 'photo_url' => $photo,
                 'job_payment' => $request->job_payment,
@@ -92,7 +92,7 @@ class FinderController extends Controller
      */
     public function show($id)
     {
-        $jobVacancy = JobVacancy::where('id_job','=',$id)->join('art_finder','art_finder.id', '=','art_finder_id')->first();
+        $jobVacancy = JobVacancy::where('id_job','=',$id)->join('art_finder','art_finder.id_finder', '=','art_finder_id')->first();
         return view('admin.detail',compact('jobVacancy'));
     }
 

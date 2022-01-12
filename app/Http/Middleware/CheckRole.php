@@ -20,7 +20,9 @@ class CheckRole
         $user = Auth::user();
         if (Auth::check() && $user->role == $role) {
             return $next($request);
-        } 
+        }else{
+            return back();
+        }
 
         return dump($user->role);
         

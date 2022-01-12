@@ -71,14 +71,14 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
             if($request->role == 0){
-                $artFinder = ArtFinder::create([
+                ArtFinder::create([
                     'user_id' => $user->id,
                     'full_name' => $request->name,
                 ]); 
                 $request->session()->flash('success','Data anda berhasil di daftarkan Sebagai pencari! ');
                 return redirect(route('user.login'));
             }else if($request->role == 1){
-                $art = Art::create([
+                Art::create([
                     'user_id' => $user->id,
                     'kontak' => $request->contact_number,
                     'art_full_name' => $request->name,

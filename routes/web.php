@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArtController;
 use App\Http\Controllers\FinderController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::middleware(['auth'])->group(function(){
+Route::middleware(['auth','role:0'])->group(function(){
     Route::get('/dashboard',[FinderController::class,'index'])->name('admin.dashboard');
     Route::get('/admin/tambahLowongan', [FinderController::class,'create'])->name('admin.tambahLowongan');
     Route::post('/admin/tambahLowongan', [FinderController::class,'store'])->name('admin.store');
@@ -32,11 +33,6 @@ Route::middleware(['auth'])->group(function(){
     Route::Put('/admin/{id}/rejectJobStatus', [FinderController::class,'rejectJob'])->name('admin.rejectJobStatus');
     Route::get('/admin/GiveRating',[FinderController::class,'giveRate'])->name('admin.addRating');
     Route::Put('/admin/{id}/storeRating', [FinderController::class,'storeRating'])->name('admin.storeRating');
-
-    Route::get('/admin/detailLowongan', function() {
-        return view('admin.detailLowongan');
-    })->name('admin.detailLowongan');
-
     // Setting akun
     Route::get('/admin/pengaturanAkun', function() {
         return view('admin.pengaturanAkun');
@@ -45,18 +41,13 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/admin/ubahPassword', function() {
         return view('admin.ubahPassword');
     })->name('admin.ubahPassword');
+});
+Route::middleware(['auth','role:1'])->group(function(){
     //ARt routes
-    Route::get('/art/dashboard', function(){
-        return view('art.dashboard');
-    })->name('art.dashboard');
-    
-    Route::get('/art/detailLowongan', function(){
-        return view('art.detailLowongan');
-    })->name('art.detailLowongan');
-    
-    Route::get('/art/daftarPekerjaan', function(){
-        return view('art.daftarPekerjaan');
-    })->name('art.daftarPekerjaan');
+    Route::get('/art/dashboard', [ArtController::class,'index'])->name('art.dashboard');
+    Route::get('/art/{id}/detailLowongan',[ArtController::class,'show'])->name('art.lamar');
+    Route::post('/art/{id}/apply',[ArtController::class,'apply'])->name('art.apply');
+    Route::get('/art/daftarPekerjaan',[ArtController::class,'daftarPekerjaan'])->name('art.daftarPekerjaan');
     
     Route::get('/art/pengaturanAkun', function(){
         return view('art.pengaturanAkun');

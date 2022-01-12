@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class User extends Authenticatable
@@ -56,5 +57,18 @@ class User extends Authenticatable
     }
     public function Art() : HasOne{
         return $this->hasOne(Art::class);
+    }
+    public function Province() :BelongsTo{
+        return $this->belongsTo(Provincy::class);
+    }
+    public function City() :BelongsTo{
+        return $this->belongsTo(City::class);
+    }
+    public function District() :BelongsTo{
+        return $this->belongsTo(District::class);
+    }
+
+    public function SubDistrict() :BelongsTo{
+        return $this->belongsTo(SubDistrict::class);
     }
 }

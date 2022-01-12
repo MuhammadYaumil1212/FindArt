@@ -4,6 +4,7 @@
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Daftar Pekerjaan Anda</h1>
     </div>
+    @include('components.alert')
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
         <div class="card-body">
@@ -30,26 +31,28 @@
 						</tr>
                     </thead>
                     <tbody>
+                        @foreach ($interestJob as $job)
                         <tr>
-                            <td>Tiger Nixon</td>
-                            <td>System Architect</td>
-                            <td>Edinburgh</td>
-                            <td>2011/04/25</td>
+                            <td>{{$job->full_name}}</td>
+                            <td>{{$job->job_payment}}</td>
+                            <td>{{$job->job_due_date}}</td>
+                            <td>{{$job->updated_at}}</td>
+                            @if ($job->interested_job_status == 0)
+                            <td>Pending</td>
+                            @elseif($job->interested_job_status == 1)
+                            <td>Ditolak</td>
+                            @elseif($job->interested_job_status == 2)
                             <td>Diterima</td>
-                            <td>
-                                <a href="#" class="btn btn-link">Chat</a>
-                            </td>
+                            @elseif($job->interested_job_status == 3)
+                            <td>Berhenti</td>
+                            @endif
+                            @if ($job->interested_job_status == 2)
+                            <td>{{$job->contact_number}}</td>
+                            @else
+                            <td>Masih Menunggu</td>
+                            @endif
                         </tr>
-                        <tr>
-                            <td>Garrett Winters</td>
-                            <td>Accountant</td>
-                            <td>Tokyo</td>
-                            <td>2011/07/25</td>
-                            <td>Diterima</td>
-                            <td>
-                                <a href="#" class="btn btn-link">Chat</a>
-                            </td>
-                        </tr>
+                    @endforeach
                     </tbody>
                 </table>
             </div>
