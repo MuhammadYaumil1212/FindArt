@@ -18,7 +18,10 @@
         rel="stylesheet">
     <!-- Custom styles for this template-->
     <link href="{{asset('css/sb-admin-2.min.css')}}" rel="stylesheet">
-
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
+    {{-- Jquery --}}
+    <script src="{{asset('js/jquery-3.6.0.js')}}"></script>
+        
 </head>
 
 <body id="page-top">
@@ -56,8 +59,7 @@
     </a>
      <!-- Logout Modal -->
      @include('components.modal')
-     {{-- Jquery --}}
-     <script src="{{asset('js/jquery-3.6.0.js')}}"></script>
+     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js" defer></script>
    <!-- Bootstrap core JavaScript-->
    <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
    <script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
