@@ -48,7 +48,7 @@ Route::middleware(['auth','role:1'])->group(function(){
     Route::get('/art/{id}/detailLowongan',[ArtController::class,'show'])->name('art.lamar');
     Route::post('/art/{id}/apply',[ArtController::class,'apply'])->name('art.apply');
     Route::get('/art/daftarPekerjaan',[ArtController::class,'daftarPekerjaan'])->name('art.daftarPekerjaan');
-    
+
     Route::get('/art/pengaturanAkun', function(){
         return view('art.pengaturanAkun');
     })->name('art.pengaturanAkun');

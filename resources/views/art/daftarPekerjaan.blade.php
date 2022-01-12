@@ -7,17 +7,8 @@
     @include('components.alert')
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
+            <div class="card-header text-primary"><b>Status Pekerjaan anda</b></div>
         <div class="card-body">
-            <div class="form-group mt-2">
-                <label for="job-status">Status pekerjaan</label>
-                <select name="job-status" id="job-status" class="form-control" onchange="getMyJob()">
-                    <option value="4" selected>Semua</option>
-                    <option value="0">Pending</option>
-                    <option value="1">Ditolak</option>
-                    <option value="2">Diterima</option>
-                    <option value="3">Sudah berhenti</option>
-                </select>
-            </div>
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>

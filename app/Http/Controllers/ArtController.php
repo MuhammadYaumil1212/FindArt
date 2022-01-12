@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Art;
 use App\Models\ArtInterestedJob;
+use App\Models\City;
 use App\Models\JobVacancy;
 use App\Models\Provincy;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use PDO;
 
 class ArtController extends Controller
 {
@@ -21,12 +23,15 @@ class ArtController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $jobs = JobVacancy::join('art_finder','art_finder.id_finder','=','art_finder_id')
-        ->where('is_visible','=','1')
-        ->get();
-        return view('art.dashboard',compact('jobs'));
+        $jobs = JobVacancy::join('art_finder','art_finder.id_finder','=','art_finder_id');
+        if($request->search){
+            $jobs->where('job_payment','like','%'.$request->search.'%')
+            ->orWhere('full_name','like','%'.$request->search.'%')
+            ->orWhere('job_description','like','%'.$request->search.'%');
+        }
+        return view('art.dashboard',['jobs' => $jobs->get()]);
     }
     /**
      * Display the specified resource.
@@ -34,7 +39,7 @@ class ArtController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    //testing 
+  
     public function show($id)
     {
         $apply = JobVacancy::join('art_finder','art_finder.id_finder','=','art_finder_id')

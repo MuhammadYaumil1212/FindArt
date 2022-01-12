@@ -18,7 +18,6 @@
         rel="stylesheet">
     <!-- Custom styles for this template-->
     <link href="{{asset('css/sb-admin-2.min.css')}}" rel="stylesheet">
-
 </head>
 
 <body id="page-top">
@@ -56,6 +55,7 @@
     </a>
      <!-- Logout Modal -->
      @include('components.modal')
+
      {{-- Jquery --}}
      <script src="{{asset('js/jquery-3.6.0.js')}}"></script>
    <!-- Bootstrap core JavaScript-->

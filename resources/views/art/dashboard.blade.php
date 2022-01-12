@@ -10,25 +10,15 @@
             <h6 class="m-0 font-weight-bold text-primary">Daftar Lowongan</h6>
         </div>
         <div class="card-body">
-            <form id="form-cari">
+            <form action="{{route('art.dashboard')}}">
                 <div class="row">
                     <div class="col-12 col-sm-12 col-md-5 col-lg-5 mt-3 mb-2">
                         <div class="form-group">
-                            <select class="form-control" name="provinsi" id="provinsi" placeholder="Provinsi">
-                                <option value="" disabled selected hidden>Provinsi</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-12 col-sm-12 col-md-5 col-lg-5 mt-3">
-                        <div class="form-group">
-                            <select class="form-control" name="kota" id="kota">
-                                <option value="" disabled selected hidden>Kota</option>
-                            </select>
+                            <input type="text" class="form-control" name="search" placeholder="Cari" value="{{request('search')}}">
                         </div>
                     </div>
                     <div class="col-12 col-sm-12 col-md-2 col-lg-2 mt-3">
-                        <button type="submit" id="cari" class="btn btn-sm btn-primary mt">Cari</button>
-                        <button type="button" id="reset-search" class="btn btn-sm btn-primary mt">Reset</button>
+                        <button type="submit" id="cari" class="btn btn-sm btn-primary">Cari</button>
                     </div>
                 </div>
             </form>
